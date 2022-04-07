@@ -92,9 +92,17 @@ const db ={
         comentario:'Excelente producto y servicio',    
     },
     {
-        nombredelusuario:'',
-        comentario:'',    
-    }      
+        nombredelusuario:'Jorge Baez',
+        comentario:'Buen servicio!',    
+    },    
+    {
+        nombredelusuario:'Agustin Alcaraz',
+        comentario:'Zafan!',    
+    }, 
+    {
+        nombredelusuario:'Bautista Linares',
+        comentario:'No las recomiendo!',    
+    }   
     ]
 }
     
