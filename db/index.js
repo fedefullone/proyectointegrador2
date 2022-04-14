@@ -108,4 +108,4 @@ const db ={
     
 
 
-module.exports = sneakers
+module.exports = sneakers;

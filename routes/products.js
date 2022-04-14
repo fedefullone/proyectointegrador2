@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router();
 const database = require('../db/index')
 
-const controladordelproducto = require('../controller/controladordelproducto')
-const productos = require('../controllers/controladordelproducto')
+const controladorProductos = require('../controller/controladorProductos')
+const productos = require('../controllers/controladorProductos')
 
 router.get('/:id', controladordelproducto.main)
 

@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 const controladorMain = require ('../controllers/controladorMain')
 /* GET home page. */
-router.get('/', controladorMain)
-router.get('/login', controladorMain)
-router.get('/register', controladorMain)
+router.get('/', controladorMain.main)
+router.get('/login', controladorMain.login)
+router.get('/register', controladorMain.register)
 
 module.exports = router;

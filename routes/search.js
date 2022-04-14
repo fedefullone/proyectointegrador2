@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const controladorBuscador = require('../controllers/ControladorSearch');
 
-let controladoresBuscador = require('../controllers/ControladorSearch');
-
-router.get('/:search', controladorSearch.search);
+router.get('/:search', controladorBuscador.search);
 
 module.exports = router;
