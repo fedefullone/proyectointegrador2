@@ -1,11 +1,10 @@
+const controladorProductos = require('../controller/controladorProductos')
+
 const express = require('express')
 const router = express.Router();
-const database = require('../db/index')
 
-const controladorProductos = require('../controller/controladorProductos')
-const productos = require('../controllers/controladorProductos')
-
-router.get('/:id', controladordelproducto.main)
+router.get('/add', controladorProductos.add)
+router.get('/:id', controladorProductos.show)
 
 
 module.exports = router;
