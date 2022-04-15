@@ -1,23 +1,21 @@
 const database = require('../db/index')
-
 const controladorUsers = {
-    show: (req, res) =>{
+    show: function(req, res){
         return res.render('profile', {
             productos: database.productos,
             usuarios: database.usuario,
         })
     },
-    login:   (req, res) =>{
-        return res.render('login')
-    },
-    register:   (req, res) =>{
+    register: function(req, res){
         return res.render('register')
     },
-    edit:   (req, res) =>{
+    edit:  function(req, res){
         return res.render('login',{
             usuario:database.usuario,
         })
     },
+    login:   function(req, res){
+        return res.render('login')
+    },
 }
-
 module.exports = controladorUsers;

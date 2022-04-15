@@ -1,7 +1,7 @@
 const database = require('../db/index')
 
 const controladorMain = {
-    show: (req, res) =>{
+    show: function(req, res) {
         return res.render('index', {
             productos: database.productos,
             usuarios: database.usuario,
@@ -9,7 +9,7 @@ const controladorMain = {
             id: req.params.id
         })
     },
-    searchResults:   (req, res) =>{
+    searchResults: function(req, res){
         return res.render('search-results', {
             productos: database.productos,
             usuarios: database.usuario,

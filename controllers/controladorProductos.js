@@ -1,6 +1,6 @@
 const database = require('../db/index')
 const controladorProductos = {
-    show: (req, res) =>{
+    show: function(req, res){
         return res.render('product', {
             productos: database.productos,
             usuarios: database.usuario,
@@ -8,7 +8,7 @@ const controladorProductos = {
             id: req.params.id,
         })
     },
-    add: (req,res)=>{
+    add:function(req, res){
         return res.render('product-add', {
             usuario: database.usuario,
             comentarios: database.comentarios,
