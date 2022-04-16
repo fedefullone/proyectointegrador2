@@ -1,4 +1,4 @@
-const db ={
+const database ={
     usuario:{
         usuario:'Bautista Martinez Baeza',
         contraseña:'Progra',
@@ -124,4 +124,4 @@ const db ={
     
 
 
-module.exports = db;
+module.exports = database;
