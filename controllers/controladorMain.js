@@ -16,6 +16,13 @@ const controladorMain = {
             comentarios: database.comentarios,
         })
     },
+    all: function(req, res){
+        return res.render('allProducts', {
+            productos: database.productos,
+            usuarios: database.usuario,
+            comentarios: database.comentarios,
+        })
+    },
 }
 
 module.exports = controladorMain;
