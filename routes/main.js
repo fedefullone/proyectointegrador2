@@ -12,3 +12,6 @@ router.get('/all-products', controladorMain.all)
 
 
 module.exports = router;
+
+
+

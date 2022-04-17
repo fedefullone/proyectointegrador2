@@ -9,3 +9,4 @@ router.get('/register', controladorUsers.register)
 router.get('/edit', controladorUsers.edit)
 
 module.exports = router;
+
