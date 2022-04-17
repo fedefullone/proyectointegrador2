@@ -1,76 +1,82 @@
 <html>
 
-	<head>
-		<%- include('./partials/head') %>
-	</head>
-	
-	<body>
-		<!-- Header -->
-		<%- include('./partials/header') %>
+<head>
+	<%- include('./partials/head') %>
+</head>
+
+<body>
+	<!-- Header -->
+	<%- include('./partials/header') %>
 		<!-- /Header -->
-	
+
 		<main>
 			<!-- product detail -->
 			<div class="container products-wrapper">
 				<div class="d-flex align-items-center">
 					<h2 class="products-title">
-						<% for(let i = 0; i < productos.length; i++){ %>
-						<% if(id== productos[i].id){ %>
-						<%= productos[i].nombre %>
-						<% } %>
-						<% } %> 
-						<h2 class="products-title">
-							
-							<% for(let i = 0; i < productos.length; i++){ %>
-								<% if(id== productos[i].id){ %>
+						<% for(let i=0; i < productos.length; i++){ %>
+							<% if(id==productos[i].id){ %>
 								<%= productos[i].nombre %>
-								<%= productos[i].marca %>
-								<% } %>
-								<% } %> 
-						</h2>
-						<p> </p>
-						<h2 class="products-title">
-							
-							<% for(let i = 0; i < productos.length; i++){ %>
-								<% if(id== productos[i].id){ %>
-								<%= productos[i].nombre %>
-								<%= productos[i].modelo %>
-								<% } %>
-								<% } %> 
-						</h2>
-	
-						<p class="product-detail-description">
-							<a href="/product/add">Agregar producto</a>
-						</p>
+									<%= productos[i].marca %>
+										<% } %>
+											<% } %>
+												<h2 class="products-title">
+
+													<% for(let i=0; i < productos.length; i++){ %>
+														<% if(id==productos[i].id){ %>
+
+															<% } %>
+																<% } %>
+												</h2>
+												<p> </p>
+												<h2 class="products-title">
+
+													<% for(let i=0; i < productos.length; i++){ %>
+														<% if(id==productos[i].id){ %>
+															<%= productos[i].nombre %>
+																<%= productos[i].modelo %>
+																	<% } %>
+																		<% } %>
+												</h2>
+
+												<p class="product-detail-description">
+													<a href="/product/add">Agregar producto</a>
+												</p>
 				</div>
 				<div class="product-detail">
 					<div class="row">
 						<article class="col-12 col-lg-8 product-detail-info">
-							<% for (let i = 0; i < productos.length; i++) { %>
-							<img src="<% productos[i].imagen %>" alt="<% productos[i].modelo %> "
-								class="product-detail-img">
-							<p class="product-detail-description">
-								<%= productos[i].comentarios %>
-							</p>
-							<% } %>
-	
-	
+							<% for (let i=0; i < productos.length; i++) { %>
+								<img src="<% for(let i = 0; i < productos.length; i++){ %>
+								<% if(id== productos[i].id){ %>
+								<%= productos[i].imagen %>
+								
+								<% } %>
+								<% } %> " alt="<% productos[i].modelo %> " class="product-detail-img">
+								<p class="product-detail-description">
+									<%= productos[i].descripcion %>
+								</p>
+								<% } %>
+
+
 						</article>
 						<div class="col-12 col-lg-4">
 							<section class="comments">
 								<article>
 									<img src="https://via.placeholder.com/35" alt="">
 									<div class="data">
-										<% for (let i = 0; i < comentarios.length; i++) { %>
-										<p class="user">
-											<strong> <a href="/user"> <%= comentarios[i].nombredelusuario %></a> </strong>
-											<%= comentarios[i].comentario %>
-										</p>
-										<% } %>
-	
+										<% for (let i=0; i < comentarios.length; i++) { %>
+											<p class="user">
+												<strong> <a href="/user">
+														<%= comentarios[i].nombredelusuario %>
+													</a> </strong>
+												<%= comentarios[i].comentario %>
+											</p>
+											<% } %>
+
 									</div>
 								</article>
-	
+
 							</section>
 							<form class="form" action="" method="POST">
 								<input class="form-input" type="text" value="" placeholder="Agregar comentario">
@@ -84,6 +90,6 @@
 			<!-- /product detail -->
 		</main>
 		<%- include('./partials/footer') %>
-	</body>
-	
-	</html>
+</body>
+
+</html>
