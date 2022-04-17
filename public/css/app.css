@@ -1,7 +1,7 @@
 /*====== Fonts ======*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
 
 /*====== Variables ======*/
 :root {
@@ -303,6 +303,12 @@ hr {
   padding: 15px 0;
 }
 
+.footer-nuevo {
+  color: black;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Square Peg';
+}
 
 /*====== Product Detail ======*/
 .product-detail {
