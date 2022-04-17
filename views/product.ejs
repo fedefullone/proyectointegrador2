@@ -40,7 +40,7 @@
 						</h2>
 	
 						<p class="product-detail-description">
-							<a href="/product/add">Editar</a>
+							<a href="/product/add">Agregar producto</a>
 						</p>
 				</div>
 				<div class="product-detail">
@@ -63,7 +63,7 @@
 									<div class="data">
 										<% for (let i = 0; i < comentarios.length; i++) { %>
 										<p class="user">
-											<strong> <a href="profile.html"> <%= comentarios[i].nombredelusuario %></a> </strong>
+											<strong> <a href="/user"> <%= comentarios[i].nombredelusuario %></a> </strong>
 											<%= comentarios[i].comentario %>
 										</p>
 										<% } %>
