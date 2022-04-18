@@ -140,6 +140,8 @@ hr {
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  color: whitesmoke;
+  font-family: 'Bebas Neue';
 }
 
 .logout:hover{
@@ -312,7 +314,7 @@ hr {
 
 /*====== Product Detail ======*/
 .product-detail {
-  background-color: #76d1fc;
+  background-color: #f7654b;
   border-radius: 8px;
   overflow: hidden;
 }
