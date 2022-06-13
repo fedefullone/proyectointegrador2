@@ -2,14 +2,15 @@ CREATE SCHEMA sneakers;
 USE sneakers;
 
 CREATE TABLE users (
-id INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT  NULL,
-email VARCHAR(255) UNIQUE NOT NULL,
-password VARCHAR(255) NOT NULL,
-username VARCHAR(150),
-nacimiento VARCHAR(150),
-createdAt DATETIME,
-updatedAt DATETIME,
-deletedAt DATETIME
+	id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	email VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    dni VARCHAR(8) NOT NULL,
+	image VARCHAR(255) NOT NULL,
+    createdAt DATETIME not null,
+    updatedAt DATETIME
 );
 
 CREATE TABLE products (
@@ -20,15 +21,30 @@ fecha_de_lanzamiento VARCHAR(255) UNIQUE NOT NULL,
 descripcion VARCHAR(255) UNIQUE NOT NULL,
 createdAt DATETIME,
 updatedAt DATETIME,
-deletedAt DATETIME
+deletedAt DATETIME,
+
+FkUserId INT UNSIGNED,
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
 id INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT  NULL,
-username VARCHAR(255) UNIQUE NOT NULL,
 comentario VARCHAR(150),
+FkProductId INT unique NOT NULL,
+FkUserId INT unique NOT NULL ,
 createdAt DATETIME,
 updatedAt DATETIME,
-deletedAt DATETIME
+
+ FOREIGN KEY (FkProductId) REFERENCES products(id),
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
+);
+
+CREATE TABLE usersFollowers (
+	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+    FkUserId INT UNSIGNED NOT NULL,
+    FkFollowerId INT UNSIGNED NOT NULL,
+    
+    FOREIGN KEY (FkUserId) REFERENCES users(id),
+	FOREIGN KEY (FkFollowerId) REFERENCES users(id)
 );
 
