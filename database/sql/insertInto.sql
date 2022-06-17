@@ -1,7 +1,7 @@
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
 VALUES 
 ("fedefullone@hotmail.com", "fedefullone", "gomez2008", "2002-01-08", "44298765", "/images/users/fede.jpeg", curdate()),
-("martinez@hotmail.com", "bmartinez", "gomez2007", "2003-03-01","44298764","/images/users/bauti.jpeg", curdate()),
+("martinez@hotmail.com", "bmartinez", "gomez2007", "2003-03-01","44298764","/images/users/bauti.webp", curdate()),
 ("sherrerasendes@hotmail.com", "sherrera", "santiagoxd", "2002-02-14","44298769","/images/users/santi.jpeg", curdate());
 
 INSERT INTO products (marca, modelo, fecha_de_lanzamiento, descripcion, createdAt, FkUserId, image, color)
