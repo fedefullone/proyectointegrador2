@@ -14,11 +14,7 @@
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
-			<form action="" method%="GET">
-				<div>
-					 <label for="nombre">Nombre:</label>
-					 <input id="nombre" type="text" name="nombre" value="">
-				 </div>
+			<form action="users/store" method%="POST">
 				 <div>
 					 <label for="email">Email:</label>
 					 <input id="email" type="email" name="email" value="">
@@ -29,12 +25,14 @@
 			   </div>
 			   <div>
 				<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
-				<input id="Fecha de nacimiento" type="date" name="Fecha de nacimiento" value="">
+				<input id="Fecha de nacimiento" type="date" name="FechaDeNacimiento" value="">
 		  		 </div>
 		 	  <div>
-				<label for="nuemro de documento">nuemro de documento:</label>
-				<input id="nuemro de documento" type="text" name="nuemro de documento" value="">
+				<label for="numero de documento">DNI:</label>
+				<input id="numero de documento" type="text" name="dni" value="">
 	 		  </div>
+			   <div>
+				<!--Aca hay que poner para agregar la foto-->
 
 				 <div>
 					 <button type="submit">Enviar</button>

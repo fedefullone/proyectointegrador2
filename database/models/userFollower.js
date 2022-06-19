@@ -1,3 +1,4 @@
+module.exports = function(sequelize, dataTypes){
 // Definimos un alias con el que luego vamos a llamarlo en el controlador
 let alias = 'UserFollower';
 //Agregamos las columnas y sus propiedades
@@ -26,3 +27,6 @@ let config = {
     underscored: false, //si la tabla tiene columnas con nombres usando _.
 }
 const UserFollower = Sequelize.define(alias, cols, config);
+
+return UserFollower;
+}
