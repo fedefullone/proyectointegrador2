@@ -1,4 +1,4 @@
-const db = require('../database/models')
+const db = require('../database/models')//Trae los modelos
 const users = db.User; //Este es el alias
 const bcrypt = require('bcrypt'); //Componente para hashear
 

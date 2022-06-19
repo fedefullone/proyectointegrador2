@@ -1,4 +1,6 @@
-const database = require('../db/index')
+const database = require('../database/models')// Trae los modelos
+const users = db.User; //Este es el alias
+
 
 const controladorMain = {
     show: function(req, res) {

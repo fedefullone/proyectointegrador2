@@ -1,4 +1,6 @@
-const database = require('../db/index')
+const database = require('../database/models') //Trae los modelos
+const products = db.Product; //Este es el alias
+
 const controladorProductos = {
     show: function(req, res){
         return res.render('product', {
