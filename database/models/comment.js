@@ -7,7 +7,7 @@ let cols = {
         primaryKey: true,
         notNull: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER.UNIQUE,
+        type: DataTypes.INTEGER.UNSIGNED,
     },
     comentario: {
         notNull: false,
