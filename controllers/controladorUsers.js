@@ -13,7 +13,9 @@ const controladorUsers = {
             email: req.body.email,
             password: becrypt.hashSync(req.body.password, 10), //Hasheamos la contraseña que viene del formulario
             fechadenacimiento: req.body.FechaDeNacimiento,
-            dni: req.body.dni
+            dni: req.body.dni,
+            image: req.file.filename
+
         }
     
 
