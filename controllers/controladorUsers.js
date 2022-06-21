@@ -25,6 +25,13 @@ const controladorUsers = {
     })
     .catch(error => console.log(error))
 
+},
+login: function(req, res){
+    return res.render ('login')
+},
+//Para que procesemos
+signIn: function(req, res){
+    
 }
     /*
     show: function(req, res){
