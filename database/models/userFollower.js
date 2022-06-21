@@ -7,15 +7,15 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             notNull: true,
             autoIncrement: true,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: dataTypes.INTEGER.UNSIGNED
         },
         FkUserId: {
             notNull: true,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: dataTypes.INTEGER.UNSIGNED
         },
         FkFollowerId: {
             notNull: true,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: dataTypes.INTEGER.UNSIGNED
         }
 
     }
@@ -26,7 +26,7 @@ module.exports = function (sequelize, dataTypes) {
         timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const UserFollower = Sequelize.define(alias, cols, config);
+    const UserFollower = sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
     UserFollower.associate = function (models) {

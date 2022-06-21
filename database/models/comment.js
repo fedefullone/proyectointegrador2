@@ -7,27 +7,27 @@ let cols = {
         primaryKey: true,
         notNull: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: dataTypes.INTEGER.UNSIGNED,
     },
     comentario: {
         notNull: false,
-        type: DataTypes.STRING,
+        type: dataTypes.STRING,
     },
     FkProductId: {
         notNull: false,
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: dataTypes.INTEGER.UNSIGNED,
     },
     FkUserId: {
         notNull: false,
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: dataTypes.INTEGER.UNSIGNED,
     },
     createdAt: {
         notNull: false,
-        type: DataTypes.DATE,
+        type: dataTypes.DATE,
     },
     updatedAt: {
         notNull: false,
-        type: DataTypes.DATE,
+        type: dataTypes.DATE,
     }
 }
 
@@ -37,14 +37,14 @@ let config = {
     timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
     underscored: false, //si la tabla tiene columnas con nombres usando _.
 }
-const Comment = Sequelize.define(alias, cols, config);
+const Comment = sequelize.define(alias, cols, config);
 
 //Relaciones entre tablas
 Comment.associate = function(models){
     Comment.belongsTo(models.product,
         {
             as: 'productoComentado',
-            foreignKey: 'FkPhoneId'
+            foreignKey: 'FkProductId'
         });
 
     Comment.belongsTo(models.user,

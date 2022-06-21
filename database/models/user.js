@@ -8,35 +8,35 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             notNull: true,
             autoIncrement: true,
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
         },
         email: {
             notNull: true,
-            type: DataTypes.STRING.UNIQUE,
+            type: dataTypes.STRING,
         },
         password: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         birthdate: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         dni: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         image: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         createdAt: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updatedAt: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         }
     }
 
@@ -46,7 +46,7 @@ module.exports = function (sequelize, dataTypes) {
         timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const User = Sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
 

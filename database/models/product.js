@@ -7,44 +7,44 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             notNull: true,
             autoIncrement: true,
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
         },
         marca: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         modelo: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         descripcion: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         image: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         color: {
             notNull: true,
-            type: DataTypes.STRING,
+            type: dataTypes.STRING,
         },
         createdAt: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updatedAt: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
         deletedAt: {
             notNull: false,
-            type: DataTypes.DATE,
+            type: dataTypes.DATE,
         },
 
         FkUserId: {
             notNull: false,
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
         }
 
     }
@@ -55,7 +55,7 @@ module.exports = function (sequelize, dataTypes) {
         timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const Product = Sequelize.define(alias, cols, config);
+    const Product = sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
     Product.associate = function (models) {
