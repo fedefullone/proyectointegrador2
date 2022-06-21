@@ -1,30 +1,36 @@
-const database = require('../database/models')// Trae los modelos
+const db = require('../database/models')// Trae los modelos
 const users = db.User; //Este es el alias
+const products = db.Product
 
 
 const controladorMain = {
-    show: function(req, res) {
-        return res.render('index', {
-            productos: database.productos,
-            usuarios: database.usuario,
-            comentarios: database.comentarios,
-            id: req.params.id
+    index: function(req, res) {
+        //promesa find all
+        products.findAll({
+            //pongo order descendente y createdAt
+            order : [['createdAt', 'DESC']],
+            limit: 12,
+            include:{
+                all:true,
+                nested:true
+            }
         })
-    },
-    searchResults: function(req, res){
-        return res.render('search-results', {
-            productos: database.productos,
-            usuarios: database.usuario,
-            comentarios: database.comentarios,
-        })
-    },
-    all: function(req, res){
-        return res.render('allProducts', {
-            productos: database.productos,
-            usuarios: database.usuario,
-            comentarios: database.comentarios,
-        })
-    },
+       
+       
+       //Hacer el then(results) que renderiza index y le paso como objeto literal results
+       
+        then((results)=>{
+            //Renderizamos la vista de Index-Home page y le pasamos a la vista informacion de los results de la promesa// 
+            res.render('index' , {
+              results: results,
+            })}
+        )},
+
+        
+        
+        
+    
+    
 }
 
 module.exports = controladorMain;
