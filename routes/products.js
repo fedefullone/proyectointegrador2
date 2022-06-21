@@ -2,7 +2,8 @@ const controladorProductos = require('../controllers/controladorProductos')
 
 const express = require('express')
 const router = express.Router();
-
+const multer  = require('multer');
+const path = require('path');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -15,12 +16,12 @@ var storage = multer.diskStorage({
   var upload = multer({ storage: storage });
 
   
-router.get('/add', controladorProductos.add)
+//router.get('/add', controladorProductos.add)
 router.get('/:id', controladorProductos.show)
-router.get('/edit/:id', controladorProductos.edit) 
+//router.get('/edit/:id', controladorProductos.edit) 
 router.post('/store', upload.single('image'), controladorProductos.store)
-router.post('/update/:id', upload.single('image'), controladorProductos.update)
-router.post('/storeComentarios', controladorProductos.storeComentarios)
+//router.post('/update/:id', upload.single('image'), controladorProductos.update)
+//router.post('/storeComentarios', controladorProductos.storeComentarios)
 
 
 
