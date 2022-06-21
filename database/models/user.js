@@ -8,18 +8,18 @@ let cols = {
         primaryKey: true,
         notNull: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER.UNSIGNED.UNIQUE,
+        type: DataTypes.INTEGER.UNSIGNED,
     },
     email: {
         notNull: true,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING.UNIQUE,
     },
     password: {
         notNull: true,
         type: DataTypes.STRING,
     },
-    date: {
-        notNull: true,
+    birthdate: {
+        notNull: false,
         type: DataTypes.DATE,
     },
     dni: {
@@ -31,10 +31,11 @@ let cols = {
         type: DataTypes.STRING,
     },
     createdAt: {
-        notNull: true,
+        notNull: false,
         type: DataTypes.DATE,
     },
     updatedAt: {
+        notNull: false,
         type: DataTypes.DATE,
     }
 }

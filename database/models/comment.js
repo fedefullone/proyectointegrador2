@@ -22,10 +22,11 @@ let cols = {
         type: DataTypes.INTEGER.UNSIGNED,
     },
     createdAt: {
-        notNull: true,
+        notNull: false,
         type: DataTypes.DATE,
     },
     updatedAt: {
+        notNull: false,
         type: DataTypes.DATE,
     }
 }

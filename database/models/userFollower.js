@@ -7,7 +7,7 @@ let cols = {
         primaryKey: true,
         notNull: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER.UNSIGNED.UNIQUE
+        type: DataTypes.INTEGER.UNSIGNED
     },
     FkUserId: {
         notNull: true,
