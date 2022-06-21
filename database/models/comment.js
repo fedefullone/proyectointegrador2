@@ -39,5 +39,22 @@ let config = {
 }
 const Comment = Sequelize.define(alias, cols, config);
 
+//Relaciones entre tablas
+Comment.associate = function(models){
+    Comment.belongsTo(models.product,
+        {
+            as: 'productoComentado',
+            foreignKey: 'FkPhoneId'
+        });
+
+    Comment.belongsTo(models.user,
+        {
+            as: 'comentador',
+            foreignKey: 'FkUserId'
+        });
+    }
+
+
+
 return Comment;
 }

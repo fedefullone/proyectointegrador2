@@ -1,4 +1,4 @@
-INSERT INTO users (email, username, password, date, dni, image, createdAt)
+INSERT INTO users (email, username, password, birthdate, dni, image, createdAt)
 VALUES 
 ("fedefullone@hotmail.com", "fedefullone", "gomez2008", "2002-01-08", "44298765", "/images/users/fede.jpeg", curdate()),
 ("martinez@hotmail.com", "bmartinez", "gomez2007", "2003-03-01","44298764","/images/users/bauti.webp", curdate()),

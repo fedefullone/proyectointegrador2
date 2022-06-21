@@ -2,11 +2,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-
-
-
 const  app = express();
+
+let session = require('express-session')
+
+//Requerimento de database//
+const db = require("./database/models")
+const User = db.User
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
