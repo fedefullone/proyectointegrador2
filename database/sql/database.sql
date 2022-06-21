@@ -2,14 +2,14 @@ CREATE SCHEMA sneakers;
 USE sneakers;
 
 CREATE TABLE users (
-	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL ,
 	email VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    date DATE NOT NULL,
+    birthdate DATE NOT NULL,
     dni VARCHAR(8) NOT NULL,
 	image VARCHAR(255) NOT NULL,
-    createdAt DATETIME not null,
+    createdAt DATETIME ,
     updatedAt DATETIME
 );
 

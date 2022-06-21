@@ -2,44 +2,51 @@
 <html lang="es">
 <!-- Include Head -->
 <html>
-    <head>
-		<%- include('./partials/head') %>    </head>
+
+<head>
+	<%- include('./partials/head') %>
+</head>
+
 <body>
 
 	<%- include('./partials/header') %>
-    <main>
-    	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-			<form action="users/store" method="POST" enctype="multipart/form-data">
-				 <div>
-					 <label for="email">Email:</label>
-					 <input id="email" type="email" name="email" value="">
-				</div>
-				<div>
-					<label for="password">contraseña </label>
-					<input id="password" type="password" name="password" value="">
-			   </div>
-			   <div>
-				<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
-				<input id="Fecha de nacimiento" type="date" name="FechaDeNacimiento" value="">
-		  		 </div>
-		 	  <div>
-				<label for="numero de documento">DNI:</label>
-				<input id="numero de documento" type="text" name="dni" value="">
-	 		  </div>
-			   <div>
-				<!--Aca hay que poner para agregar la foto-->
+		<main>
+			<!-- Novedades -->
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="products-title">Registrate</h2>
+					</div>
+					<form action="users/store" method="POST" enctype="multipart/form-data">
+						<div>
+							<label for="email">Email:</label>
+							<input id="email" type="email" name="email" value="">
+						</div>
+						<div>
+							<label for="password">contraseña </label>
+							<input id="password" type="password" name="password" value="">
+						</div>
+						<div>
+							<label for="Fecha de nacimiento">Fecha de nacimiento:</label>
+							<input id="Fecha de nacimiento" type="date" name="FechaDeNacimiento" value="">
+						</div>
+						<div>
+							<label for="numero de documento">DNI:</label>
+							<input id="numero de documento" type="text" name="dni" value="">
+						</div>
+						<div>
+							<input type="file" name="fotos" value="">
+						</div>
+						<div>
+							<button type="submit">Registrarme</button>
+						</div>
 
-				 <div>
-					 <button type="submit">Enviar</button>
+					</form>
 				</div>
-			</form>
-</main>
-<%- include('./partials/footer') %>
+			</div>
+		</main>
+		<%- include('./partials/footer') %>
 
 </body>
+
 </html>
