@@ -7,7 +7,7 @@ let cols = {
         primaryKey: true,
         notNull: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER.UNSIGNED.UNIQUE,
+        type: DataTypes.INTEGER.UNSIGNED,
     },
     marca: {
         notNull: true,
@@ -15,15 +15,11 @@ let cols = {
     },
     modelo: {
         notNull: true,
-        type: DataTypes.STRING.UNIQUE,
-    },
-    fecha_de_lanzamiento: {
-        notNull: true,
-        type: DataTypes.INTEGER(4).UNIQUE,
+        type: DataTypes.STRING,
     },
     descripcion: {
         notNull: true,
-        type: DataTypes.INTEGER(4).UNIQUE,
+        type: DataTypes.STRING,
     },
     image: {
         notNull: true,
@@ -34,13 +30,15 @@ let cols = {
         type: DataTypes.STRING,
     },
     createdAt: {
-        notNull: true,
+        notNull: false,
         type: DataTypes.DATE,
     },
     updatedAt: {
+        notNull: false,
         type: DataTypes.DATE,
     },
     deletedAt: {
+        notNull: false,
         type: DataTypes.DATE,
     },
 
