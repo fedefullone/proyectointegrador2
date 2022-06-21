@@ -6,7 +6,7 @@ const path = require('path');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-          cb(null, path.join(__dirname, './public/img/users'));
+          cb(null, path.join(__dirname, './public/imgages/users'));
     },
     filename: (req, file, cb) => {
           cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -22,7 +22,7 @@ router.get('/', controladorUsers.show);
 router.get('/login', controladorUsers.login);//Muestra el form de login al usuario
 router.get('/login', controladorUsers.signIn);
 router.get('/register', controladorUsers.create);//Muestra el form registro al usuario
-router.post('/store', controladorUsers.store);//Procesa los datos recibidos en el form
+router.post('/store', upload.single('images'), controladorUsers.store);//Procesa los datos recibidos en el form
 router.get('/edit', controladorUsers.edit);
 
 module.exports = router;
