@@ -51,12 +51,12 @@ module.exports = function (sequelize, dataTypes) {
     //Relaciones entre tablas
 
     User.associate = function (models) {
-        User.hasMany(models.product, {
+        User.hasMany(models.Product, {
             as: 'posteos',
             foreignKey: 'id'
         });
 
-        User.hasMany(models.comment, {
+        User.hasMany(models.Comment, {
             as: 'comentarios',
             foreignKey: 'id'
         });

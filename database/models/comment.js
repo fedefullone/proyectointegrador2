@@ -41,13 +41,13 @@ const Comment = sequelize.define(alias, cols, config);
 
 //Relaciones entre tablas
 Comment.associate = function(models){
-    Comment.belongsTo(models.product,
+    Comment.belongsTo(models.Product,
         {
             as: 'productoComentado',
             foreignKey: 'FkProductId'
         });
 
-    Comment.belongsTo(models.user,
+    Comment.belongsTo(models.User,
         {
             as: 'comentador',
             foreignKey: 'FkUserId'
