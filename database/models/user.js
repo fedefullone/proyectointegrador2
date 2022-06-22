@@ -14,6 +14,10 @@ module.exports = function (sequelize, dataTypes) {
             notNull: true,
             type: dataTypes.STRING,
         },
+        username: {
+            notNull: true,
+            type: dataTypes.STRING,
+        },
         password: {
             notNull: true,
             type: dataTypes.STRING,
@@ -37,7 +41,8 @@ module.exports = function (sequelize, dataTypes) {
         updatedAt: {
             notNull: false,
             type: dataTypes.DATE,
-        }
+        },
+         
     }
 
     //Configuraciones adicionales
@@ -58,7 +63,7 @@ module.exports = function (sequelize, dataTypes) {
 
         User.hasMany(models.Comment, {
             as: 'comentarios',
-            foreignKey: 'id'
+            foreignKey: 'FkUserId'
         });
     }
 

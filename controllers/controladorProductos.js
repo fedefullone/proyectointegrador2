@@ -1,6 +1,8 @@
 const db = require('../database/models') //Trae los modelos
 const products = db.Product; //Este es el alias
 const marcas = db.Marca;
+const comentarios= db.Comment;
+const users= db.User;
 
 const controladorProductos = {
     index: function (req, res) {
@@ -10,7 +12,7 @@ const controladorProductos = {
             ]
         })
             .then(function (sneakers) {
-                return res.send(sneakers)
+                //return res.send(sneakers)
                 return res.render('index', { products: sneakers });
             })
     },
@@ -18,9 +20,26 @@ const controladorProductos = {
     show: function (req, res) {
         let id = req.params.id
 
-        products.findByPK(id)
+        products.findAll({ 
+            where:[{id:req.params.id}],
+            include:[{association:"owner"},{association:"comentarios"} ]
+        })
             .then(function (zapatilla) {
-                return res.send(zapatilla)
+               let comentadores = [];
+               for(let i= 0; i<zapatilla[0].comentarios.length; i++){
+                   users.findOne({where:[{id:zapatilla[0].comentarios[i].FkUserId}]})
+                   .then(function(comentador){
+                       comentadores.push(comentador)    
+                    if(i==zapatilla[0].comentarios.length-1)
+                    {
+                        let a = {zapatilla:zapatilla, comentadores:comentadores};
+                       // return res.send(a)
+                        return res.render('product', {productos:zapatilla, id:req.params.id, comentadores:comentadores } )   
+                    }
+                   })
+               }
+               
+                
             })
 
     },
@@ -36,15 +55,7 @@ const controladorProductos = {
                 return res.send(resultados)
             })
     },
-    create: function (req, res) {
-        marcas.findAll()
-            .then(function (marcas) {
-                return res.render('NuevoProducto', { marcas: marcas })
-            })
-            .catch(error => console.log(error))
-
-
-    },
+    
     store: function (req, res) {
         //Obtener los datos del formulario y armar el objeto literal que quiero guardar
         let sneaker = {

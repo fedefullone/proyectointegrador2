@@ -66,12 +66,12 @@
 								<article>
 									<img src="https://via.placeholder.com/35" alt="">
 									<div class="data">
-										<% for (let i=0; i < comentarios.length; i++) { %>
+										<% for (let i=0; i < productos[0].comentarios.length; i++) { %>
 											<p class="user">
-												<strong> <a href="/user">
-														<%= comentarios[i].nombredelusuario %>
+												<strong> <a href="/user/<%= comentadores[i].id %>">
+														<%= comentadores[i].username %>
 													</a> </strong>
-												<%= comentarios[i].comentario %>
+												<%= productos[0].comentarios[i].comentario %>
 											</p>
 											<% } %>
 

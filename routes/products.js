@@ -17,12 +17,12 @@ var storage = multer.diskStorage({
 
   
 //router.get('/add', controladorProductos.add)
-router.get('/:id', controladorProductos.show)
+
 //router.get('/edit/:id', controladorProductos.edit) 
 router.post('/store', upload.single('image'), controladorProductos.store)
 //router.post('/update/:id', upload.single('image'), controladorProductos.update)
 //router.post('/storeComentarios', controladorProductos.storeComentarios)
-
+router.get('/:id', controladorProductos.show)
 
 
 

@@ -6,7 +6,8 @@ const products = db.Product;
 const controladorMain = {
     index: function(req, res) {
         //promesa find all
-        products.findAll({
+        products.findAll(
+            {
             //pongo order descendente y createdAt
             order : [['createdAt', 'DESC']],
             limit: 12,
@@ -14,15 +15,18 @@ const controladorMain = {
                 all:true,
                 nested:true
             }
-        })
+        }
+        )
        //Hacer el then(results) que renderiza index y le paso como objeto literal results//
-       then(function(results){
+       .then(function(results){
             //Renderizamos la vista de Index-Home page y le pasamos a la vista informacion de los results de la promesa// 
-           return res.render('index' , {results: results}
-              );
-            }
+           return res.render('index' , {sneakers: results})
+         //return res.send(results)
+              
+         }
         
-        );}
+        );
+    }
 
         
             
