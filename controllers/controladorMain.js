@@ -12,8 +12,8 @@ const controladorMain = {
             order : [['createdAt', 'DESC']],
             limit: 12,
             include:{
-                all:true,
-                nested:true
+            all:true,
+            nested:true
             }
         }
         )

@@ -11,6 +11,7 @@ const controladorUsers = {
 
 
     store: function (req, res) {
+        //return res.send( req.body)
         let errors = {};
 
         if (req.body.name == "") {
@@ -47,24 +48,27 @@ const controladorUsers = {
 
             //Obtener los datos del formulario y armar el objeto literal que quiero guardar
             let user = {
-                name: req.body.name,
+                username: req.body.name,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10), //Hasheamos la contraseña que viene del formulario
-                fechadenacimiento: req.body.FechaDeNacimiento,
+                birthdate: req.body.FechaDeNacimiento,
                 dni: req.body.dni,
-                image: req.file.filename
+                image: req.file.filename,
+                created_at : new Date(),
+                updated_at :  new Date(),
 
             }
-        }
-
-        //Tenemos que guardar esta info en la base de datos
-        users.create(user)
+            users.create(user)
             .then(function (userGuardado) {//En el parametro recibimos el registro que se acaba de crear en la base de datos
 
                 return res.redirect('/')
             })
             .catch(error => console.log(error))
-    },
+        }
+
+        //Tenemos que guardar esta info en la base de datos
+        
+     },
     login: function (req, res) {
         return res.render('login')
     },
