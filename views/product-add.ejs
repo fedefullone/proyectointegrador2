@@ -16,7 +16,7 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/product/store" method%="POST">
+			<form action="/product/store" method="POST"  enctype="multipart/form-data">
 				<div>
 					<label for="marca">Marca:</label>
 					<input id="marca" type="text" name="marca" value="">
@@ -32,7 +32,7 @@
 					<input id="descripcion" type="text" name="descripcion" value="">
 				</div>
 				<div>
-					<input type="file" name="image" value="">
+					<input type="file" name="images" value="">
 				</div>
 				<div>
 					<label for="color">Color:</label>

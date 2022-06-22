@@ -21,31 +21,31 @@ const controladorProductos = {
         let id = req.params.id
 
         products.findAll({
-                where: [{
-                    id: req.params.id
-                }],
-                include: [{
-                    association: "owner"
-                }, {
-                    association: "comentarios"
-                }]
-            })
+            where: [{
+                id: req.params.id
+            }],
+            include: [{
+                association: "owner"
+            }, {
+                association: "comentarios"
+            }]
+        })
             .then(function (zapatilla) {
+                //return res.send(zapatilla)
                 let comentadores = [];
+
                 for (let i = 0; i < zapatilla[0].comentarios.length; i++) {
+                    //if (zapatilla.comentarios != null ){
                     users.findOne({
-                            where: [{
-                                id: zapatilla[0].comentarios[i].FkUserId
-                            }]
-                        })
+                        where: [{
+                            id: zapatilla[0].comentarios[i].FkUserId
+                        }]
+                    })
                         .then(function (comentador) {
                             comentadores.push(comentador)
                             if (i == zapatilla[0].comentarios.length - 1) {
-                                let a = {
-                                    zapatilla: zapatilla,
-                                    comentadores: comentadores
-                                };
-                                // return res.send(a)
+                               
+                                 return res.send(zapatilla)
                                 return res.render('product', {
                                     productos: zapatilla,
                                     id: req.params.id,
@@ -54,6 +54,14 @@ const controladorProductos = {
                             }
                         })
                 }
+                /*else{
+                return res.render('product', {
+                    productos: zapatilla,
+                    id: req.params.id,
+                    //comentadores: comentadores
+                })*/
+                //}
+                //}
 
 
             })
@@ -62,11 +70,11 @@ const controladorProductos = {
     new: function (req, res) {
 
         products.findAll({
-                order: [
-                    ['updatedAt', 'DESC']
-                ],
-                limit: 5
-            })
+            order: [
+                ['updatedAt', 'DESC']
+            ],
+            limit: 5
+        })
             .then(function (resultados) {
                 return res.send(resultados)
             })
@@ -94,7 +102,7 @@ const controladorProductos = {
             res.locals.errors = errors;
             return res.render('product-add')
         } else if (req.file.filename == "") {
-            errors.message = "Ingresar foto de perfil";
+            errors.message = "Ingresar foto";
             res.locals.errors = errors;
             return res.render('product-add')
         } else if (req.body.color == "") {
@@ -115,7 +123,7 @@ const controladorProductos = {
                 updated_at: new Date(),
 
             }
-            users.create(sneaker)
+            products.create(sneaker)
                 .then(function (sneakerGuardado) { //En el parametro recibimos el registro que se acaba de crear en la base de datos
 
                     return res.redirect('/')
