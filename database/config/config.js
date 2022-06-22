@@ -4,22 +4,28 @@ module.exports =
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
+    "database": "db_sneakers",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306,
+   
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "db_sneakers",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306,
+    
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "db_sneakers",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306,
+    
   }
 }

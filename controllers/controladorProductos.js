@@ -1,6 +1,6 @@
 const db = require('../database/models') //Trae los modelos
 const products = db.Product; //Este es el alias
-const marcas = db.Marca
+const marcas = db.Marca;
 
 const controladorProductos = {
     index: function (req, res) {

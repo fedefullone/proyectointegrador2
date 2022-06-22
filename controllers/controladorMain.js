@@ -1,6 +1,6 @@
-const db = require('../database/models')// Trae los modelos
+const db = require('../database/models');// Trae los modelos
 const users = db.User; //Este es el alias
-const products = db.Product
+const products = db.Product;
 
 
 const controladorMain = {
@@ -15,22 +15,20 @@ const controladorMain = {
                 nested:true
             }
         })
-       
-       
-       //Hacer el then(results) que renderiza index y le paso como objeto literal results
-       
-        then((results)=>{
+       //Hacer el then(results) que renderiza index y le paso como objeto literal results//
+       then(function(results){
             //Renderizamos la vista de Index-Home page y le pasamos a la vista informacion de los results de la promesa// 
-            res.render('index' , {
-              results: results,
-            })}
-        )},
+           return res.render('index' , {results: results}
+              );
+            }
+        
+        );}
 
         
-        
+            
         
     
     
-}
+};
 
 module.exports = controladorMain;
