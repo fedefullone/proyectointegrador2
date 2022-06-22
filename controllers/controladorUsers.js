@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');  //Componente para hashear
 
 const controladorUsers = {
 
+
     create: function (req, res) {
         //Mostrar el form del registro
         return res.render('register')
@@ -54,28 +55,75 @@ const controladorUsers = {
                 birthdate: req.body.FechaDeNacimiento,
                 dni: req.body.dni,
                 image: req.file.filename,
-                created_at : new Date(),
-                updated_at :  new Date(),
+                created_at: new Date(),
+                updated_at: new Date(),
 
             }
             users.create(user)
-            .then(function (userGuardado) {//En el parametro recibimos el registro que se acaba de crear en la base de datos
+                .then(function (userGuardado) {//En el parametro recibimos el registro que se acaba de crear en la base de datos
 
-                return res.redirect('/')
-            })
-            .catch(error => console.log(error))
+                    return res.redirect('/user/login')
+                })
+                .catch(error => console.log(error))
         }
 
         //Tenemos que guardar esta info en la base de datos
-        
-     },
+
+    },
+
     login: function (req, res) {
         return res.render('login')
     },
     //Para que procesemos
     signIn: function (req, res) {
+        let filtro = { where: [{ email: req.body.email }] };
+        let errors = {};
+
+        if (req.body.email == "") {
+            errors.message = "Email incompleto";
+            res.locals.errors = errors;
+            return res.render('login');
+        }
+        else if (req.body.password == "") {
+            errors.message = "Contraseña vacia";
+            res.locals.errors = errors;
+            return res.render('login');
+        }
+        else {
+            users.findOne(filtro)
+                .then(function (result) {
+
+                    if (result != null) {
+
+                        let passEncriptada = bcrypt.compareSync(req.body.password, result.password)
+                        if (passEncriptada) {
+
+                            /* Poniendo en session al usuario */
+                            req.session.user = result.dataValues;
+
+                            if (req.body.remember != undefined) {
+                                res.cookie('userId', result.dataValues.id, { maxAge: 1000 * 60 * 10 })
+                            }
+
+                            return res.redirect('/')
+                        } else {
+                            errors.message = "El mail existe pero la password es incorrecta";
+                            res.locals.errors = errors;
+                            return res.render('login');
+                        }
+                    } 
+                    else {
+                        errors.message = "El mail no existe";
+                        res.locals.errors = errors;
+                        return res.render('login');
+                    }
+                }
+                )
+        }
+
 
     }
+
     /*
     show: function(req, res){
         return res.render('profile', {
