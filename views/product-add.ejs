@@ -16,34 +16,39 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="" method%="GET">
+			<form action="/product/store" method%="POST">
 				<div>
-					 <label for="nombre">Nombre:</label>
-					 <input id="nombre" type="text" name="nombre" value="">
-				 </div>				
-					
-				  	<div>
-					<label for="Descripción">Descripción:</label>
-					<input id="Descripción" type="text" name="Descripción" value="">
-					</div>
+					<label for="marca">Marca:</label>
+					<input id="marca" type="text" name="marca" value="">
+				</div>
 
-				   <div>
-					<label for="imagen del producto">imagen del producto:</label>
-					<input id="imagen del producto" type="file" name="imagen del producto" value="">
-				   </div>
-				   <div>
-					<label for="Fecha de carga">Fecha de carga:</label>
-					<input id="Fecha de carga" type="date" name="Fecha de carga" value="">
-					   </div>
-			 
-			   <div>
-					 <button type="submit">Enviar</button>
+				<div>
+					<label for="modelo">Modelo:</label>
+					<input id="modelo" type="text" name="modelo" value="">
+				</div>
+
+				<div>
+					<label for="descripcion">Descripcion:</label>
+					<input id="descripcion" type="text" name="descripcion" value="">
+				</div>
+				<div>
+					<input type="file" name="image" value="">
+				</div>
+				<div>
+					<label for="color">Color:</label>
+					<input id="color" type="text" name="color" value="">
+				</div>
+
+
+
+				<div>
+					<button type="submit">Guardar sneaker</button>
 				</div>
 			</form>
 
-	<!-- footer -->
-	<%- include('./partials/footer') %>
-	<!-- /footer -->
+			<!-- footer -->
+			<%- include('./partials/footer') %>
+			<!-- /footer -->
 </body>
 
 </html>

@@ -1,82 +1,131 @@
 const db = require('../database/models') //Trae los modelos
 const products = db.Product; //Este es el alias
 const marcas = db.Marca;
-const comentarios= db.Comment;
-const users= db.User;
+const comentarios = db.Comment;
+const users = db.User;
 
 const controladorProductos = {
-   /* index: function (req, res) {
-        products.findAll({
-            include: [
-                { association: 'marca' }
-            ]
-        })
-            .then(function (sneakers) {
-                //return res.send(sneakers)
-                return res.render('index', { products: sneakers });
-            })
-    },*/
+    /* index: function (req, res) {
+         products.findAll({
+             include: [
+                 { association: 'marca' }
+             ]
+         })
+             .then(function (sneakers) {
+                 //return res.send(sneakers)
+                 return res.render('index', { products: sneakers });
+             })
+     },*/
 
     show: function (req, res) {
         let id = req.params.id
 
-        products.findAll({ 
-            where:[{id:req.params.id}],
-            include:[{association:"owner"},{association:"comentarios"} ]
-        })
+        products.findAll({
+                where: [{
+                    id: req.params.id
+                }],
+                include: [{
+                    association: "owner"
+                }, {
+                    association: "comentarios"
+                }]
+            })
             .then(function (zapatilla) {
-               let comentadores = [];
-               for(let i= 0; i<zapatilla[0].comentarios.length; i++){
-                   users.findOne({where:[{id:zapatilla[0].comentarios[i].FkUserId}]})
-                   .then(function(comentador){
-                       comentadores.push(comentador)    
-                    if(i==zapatilla[0].comentarios.length-1)
-                    {
-                        let a = {zapatilla:zapatilla, comentadores:comentadores};
-                       // return res.send(a)
-                        return res.render('product', {productos:zapatilla, id:req.params.id, comentadores:comentadores } )   
-                    }
-                   })
-               }
-               
-                
+                let comentadores = [];
+                for (let i = 0; i < zapatilla[0].comentarios.length; i++) {
+                    users.findOne({
+                            where: [{
+                                id: zapatilla[0].comentarios[i].FkUserId
+                            }]
+                        })
+                        .then(function (comentador) {
+                            comentadores.push(comentador)
+                            if (i == zapatilla[0].comentarios.length - 1) {
+                                let a = {
+                                    zapatilla: zapatilla,
+                                    comentadores: comentadores
+                                };
+                                // return res.send(a)
+                                return res.render('product', {
+                                    productos: zapatilla,
+                                    id: req.params.id,
+                                    comentadores: comentadores
+                                })
+                            }
+                        })
+                }
+
+
             })
 
     },
     new: function (req, res) {
-        
+
         products.findAll({
-            order: [
-                ['updatedAt', 'DESC']
-            ],
-            limit: 5
-        })
+                order: [
+                    ['updatedAt', 'DESC']
+                ],
+                limit: 5
+            })
             .then(function (resultados) {
                 return res.send(resultados)
             })
     },
-    
+
+    //Para agregar nuevas sneakers
+    create: function (req, res) {
+        //Renderizar el form para agregar la sneaker
+        return res.render('product-add')
+    },
     store: function (req, res) {
-        //Obtener los datos del formulario y armar el objeto literal que quiero guardar
-        let sneaker = {
-            modelo: req.body.modelo,
-            marca: req.body.marca,
-            descripcion: req.body.descripcion,
-            color: req.body.color,
-            //imagen aca: req.body.release_date,
-            
+        //return res.send( req.body)
+        let errors = {};
+
+        if (req.body.marca == "") {
+            errors.message = "Ingresar marca";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        } else if (req.body.modelo == "") {
+            errors.message = "Ingresar modelo";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        } else if (req.body.descripcion == "") {
+            errors.message = "Ingresar descripcion";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        } else if (req.file.filename == "") {
+            errors.message = "Ingresar foto de perfil";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        } else if (req.body.color == "") {
+            errors.message = "Ingresar color";
+            res.locals.errors = errors;
+            return res.render('product-add')
+        } else {
+
+
+            //Obtener los datos del formulario y armar el objeto literal que quiero guardar
+            let sneaker = {
+                marca: req.body.marca,
+                modelo: req.body.modelo,
+                descripcion: req.body.descripcion,
+                image: req.file.filename,
+                color: req.body.color,
+                created_at: new Date(),
+                updated_at: new Date(),
+
+            }
+            users.create(sneaker)
+                .then(function (sneakerGuardado) { //En el parametro recibimos el registro que se acaba de crear en la base de datos
+
+                    return res.redirect('/')
+                })
+                .catch(error => console.log(error))
         }
-        //Guardar la info en la base de datos
-        products.create(sneaker)
-            .then(function (respuesta) { //En el parámetro recibimos el registro que se acaba de crear en la base de datos.
-                return res.send(respuesta)
-                //redirigir
-                return res.redirect('/')
-            })
-            .catch(error => console.log(error))
+
+        //Tenemos que guardar esta info en la base de datos
 
     }
-
 
 }
 

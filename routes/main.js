@@ -9,6 +9,8 @@ const  router = express.Router();
 router.get('/', controladorMain.index)
 //router.get('/search-results', controladorMain.searchResults)
 
+/*router.get('/product-add', controladorMain.add)*/
+
 
 
 module.exports = router;
