@@ -111,7 +111,7 @@ const controladorUsers = {
                             res.locals.errors = errors;
                             return res.render('login');
                         }
-                    } 
+                    }
                     else {
                         errors.message = "El mail no existe";
                         res.locals.errors = errors;
@@ -122,7 +122,12 @@ const controladorUsers = {
         }
 
 
-    }
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        res.clearCookie('userId');
+        return res.render("login")
+    },
 
     /*
     show: function(req, res){
