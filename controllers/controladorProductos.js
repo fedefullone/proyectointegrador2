@@ -5,7 +5,7 @@ const comentarios= db.Comment;
 const users= db.User;
 
 const controladorProductos = {
-    index: function (req, res) {
+    /*index: function (req, res) {
         products.findAll({
             include: [
                 { association: 'marca' }
@@ -15,7 +15,7 @@ const controladorProductos = {
                 //return res.send(sneakers)
                 return res.render('index', { products: sneakers });
             })
-    },
+    },*/
 
     show: function (req, res) {
         let id = req.params.id
