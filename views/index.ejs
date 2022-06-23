@@ -3,104 +3,66 @@
 <!-- Include Head -->
 <%- include('./partials/head') %>
 
-	<body>
-		<% if (locals.user != undefined) { %>
-			<%- include('./partials/headerLogueado.ejs')  %> 
-		  <% }else {%>
-			  <%- include('./partials/header.ejs')  %> 
-		  <% } %> 
+<body>
+	<% if (locals.user != undefined) { %>
+	<%- include('./partials/headerLogueado.ejs')  %>
+	<% }else {%>
+	<%- include('./partials/header.ejs')  %>
+	<% } %>
 
-			<!-- Banner -->
-			<div class="banner">
-				<img src="images/banner2.png" alt="Banner de ofertas">
+	<!-- Banner -->
+	<div class="banner">
+		<img src="images/banner2.png" alt="Banner de ofertas">
+	</div>
+	<!-- /Banner -->
+
+	<!-- Novedades -->
+
+
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Sneakers</h2>
 			</div>
-			<!-- /Banner -->
 
-			<!-- Novedades -->
-
-
-
+			<!-- Show the "ultimos" products -->
 			<div class="container products-wrapper">
 				<div class="row">
-					<div class="col-12">
-						<h2 class="products-title">Sneakers</h2>
-					</div>
 
 					<!-- Show the "ultimos" products -->
-					<div class="container products-wrapper">
-						<div class="row">
-							
-							<!-- Show the "ultimos" products -->
-							<% for(let i=0; i < 10; i++){ %>
-								<div class="col-12 col-sm-6 col-lg-3">
-									<section class="product-box">
-										<a href="/product/<%= sneakers[i].id %>">
-											<figure class="product-box_image">
-												<img src="<%= sneakers[i].image %>" alt="bugeada">
-											</figure>
-											<article class="product-box_data">
-												<h2>
-													<%= sneakers[i].marca %>
-												</h2>
-												<p> </p>
-												<h2>
-													<%= sneakers[i].modelo %>
-												</h2>
-												<p>
-													<%= sneakers[i].descripcion %>
-												</p>
-												<p>Comentarios: <%=sneakers[i].comentarios.length%></p>
-											</article>
-										</a>
-									</section>
-								</div>
-		
-								<%}%>
-		
-		
-						</div>
+					<% for(let i=0; i < 15; i++){ %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+							<a href="/product/<%= sneakers[i].id %>">
+								<figure class="product-box_image">
+									<img src="<%= sneakers[i].image %>" alt="bugeada">
+								</figure>
+								<article class="product-box_data">
+									<h2>
+										<%= sneakers[i].marca %>
+									</h2>
+									<p> </p>
+									<h2>
+										<%= sneakers[i].modelo %>
+									</h2>
+									<p>
+										<%= sneakers[i].descripcion %>
+									</p>
+									<p>Comentarios: <%=sneakers[i].comentarios.length%></p>
+								</article>
+							</a>
+						</section>
 					</div>
-					
-					<% for(let i=6; i < sneakers.length; i++){ %>
-						<div class="col-12 col-sm-6 col-lg-3">
-							<section class="product-box">
-								<a href="/product/<%= sneakers[i].id %>">
-									<figure class="product-box_image">
-										<img src="<%= sneakers[i].image %>" alt="cafetera moulinex">
-									</figure>
-									<article class="product-box_data">
-										<h2>
-											<%= sneakers[i].marca %>
-										</h2>
-										<p> </p>
-										<h2>
-											<%= sneakers[i].modelo %>
-										</h2>
-										<p>
-											<%= sneakers[i].descripcion %>
-										</p>
-										<p>Comentarios: <%=sneakers[i].comentarios.length%></p>
-									</article>
-								</a>
-							</section>
+
+					<%}%>
+		
+		
 						</div>
-
-						<%}%>
-
-
-
-
-				</div>
-			</div>
-			<!-- /Novedades -->
-			<!-- Más comentados -->
-			
-			<!-- /Más comentados -->
-
-
+					
 			<!-- footer -->
 			<%- include('./partials/footer') %>
-			<!-- /footer -->
-	</body>
+					<!-- /footer -->
+</body>
 
 </html>
