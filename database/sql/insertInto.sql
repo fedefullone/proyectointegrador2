@@ -32,8 +32,8 @@ VALUES
 ("Se me rompieron a los dos dias", 9, 1, curdate()),
 ("Las tengo hace mucho y siguen impecables", 10, 3, curdate()),
 ("Fabulosas", 11, 2, curdate()),
-("Zafan", 12, 1, curdate())
-("Demasiado feas", 1, 3, curdate())
+("Zafan", 12, 1, curdate()),
+("Demasiado feas", 1, 3, curdate()),
 ("las mejores que vi en mi vida", 3, 3, curdate())
 
 
