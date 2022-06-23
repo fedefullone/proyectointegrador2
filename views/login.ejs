@@ -10,6 +10,7 @@
 	<!-- Header -->
 
 	<!-- Novedades -->
+	<section class="formulario">
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -18,21 +19,24 @@
 			<!-- Show the "ultimos" products -->
 			<form action="/user/singIn" method="POST">
 				<div>
-					<label for="email">Email:</label>
+					<label for="email" class="formulario-datos">Email:</label>
 					<input id="email" type="email" name="email" value="">
 				</div>
+				<br>
 				<div>
-					<label for="password">Contraseña:</label>
+					<label for="password" class="formulario-datos">Contraseña:</label>
 					<input id="password" type="password" name="password" value="">
 				</div>
-				<label for="imput">Recordarme</label>
-				<input type="checkbox" name="recordarme" value="true">
-
+				<br>
 				<div>
-
+				<label for="input" class="formulario-datos">Recordarme</label>
+				<input type="checkbox" name="recordarme" value="true"></div>
+<br>
+				<div>
 					<button type="submit">Enviar</button>
 				</div>
 			</form>
+		</section>
 
 			<!--Footer-->
 			<%- include('./partials/footer') %>

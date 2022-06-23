@@ -181,6 +181,8 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   color: whitesmoke;
+  -webkit-text-stroke: 0.7px black;
+  
 }
 
 .product-box {
@@ -440,6 +442,21 @@ hr {
 }
 
 /*====== Formularios ======*/
+.formulario {
+margin-left: 40%;
+}
+.formulario-datos{
+  font-size: 17px;
+  -webkit-text-stroke: 0.7px black;
+  color: white; 
+}
+
+
+label{
+  display: inline-block;
+  width: 80px;
+}
+
 .form-label {
   display: inline-block;
   font-size: 1.6em;

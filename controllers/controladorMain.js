@@ -10,10 +10,10 @@ const controladorMain = {
             {
             //pongo order descendente y createdAt
             order : [['createdAt', 'DESC']],
-            limit: 12,
+            limit: 25,
             include:{
             all:true,
-            nested:true
+            //nested:true
             }
         }
         )

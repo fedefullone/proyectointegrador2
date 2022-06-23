@@ -6,10 +6,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %>
+	<%- include('./partials/headerLogueado') %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
+	<section class="formulario">
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -18,34 +19,36 @@
 			<!-- Show the "ultimos" products -->
 			<form action="/product/store" method="POST"  enctype="multipart/form-data">
 				<div>
-					<label for="marca">Marca:</label>
+					<label for="marca" class="formulario-datos">Marca:</label>
 					<input id="marca" type="text" name="marca" value="">
 				</div>
-
+<br>
 				<div>
-					<label for="modelo">Modelo:</label>
+					<label for="modelo" class="formulario-datos">Modelo:</label>
 					<input id="modelo" type="text" name="modelo" value="">
 				</div>
-
+<br>
 				<div>
-					<label for="descripcion">Descripcion:</label>
+					<label for="descripcion" class="formulario-datos">Descripcion:</label>
 					<input id="descripcion" type="text" name="descripcion" value="">
 				</div>
+				<br>
 				<div>
 					<input type="file" name="images" value="">
 				</div>
+				<br>
 				<div>
-					<label for="color">Color:</label>
+					<label for="color" class="formulario-datos">Color:</label>
 					<input id="color" type="text" name="color" value="">
 				</div>
 
 
-
+<br>
 				<div>
 					<button type="submit">Guardar sneaker</button>
 				</div>
 			</form>
-
+</section>
 			<!-- footer -->
 			<%- include('./partials/footer') %>
 			<!-- /footer -->
