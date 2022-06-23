@@ -20,40 +20,40 @@ const controladorProductos = {
     show: function (req, res) {
         let id = req.params.id
 
-        products.findAll({
-            where: [{
-                id: req.params.id
-            }],
+        products.findByPk(id,{
             include: [{
                 association: "owner"
             }, {
-                association: "comentarios"
+                association: "comentarios",
+                include:{
+                    association:'comentador'
+                }
             }]
         })
             .then(function (zapatilla) {
                 //return res.send(zapatilla)
-                let comentadores = [];
+                // let comentadores = [];
 
-                for (let i = 0; i < zapatilla[0].comentarios.length; i++) {
-                    //if (zapatilla.comentarios != null ){
-                    users.findOne({
-                        where: [{
-                            id: zapatilla[0].comentarios[i].FkUserId
-                        }]
-                    })
-                        .then(function (comentador) {
-                            comentadores.push(comentador)
-                            if (i == zapatilla[0].comentarios.length - 1) {
+                // for (let i = 0; i < zapatilla[0].comentarios.length; i++) {
+                //     //if (zapatilla.comentarios != null ){
+                //     users.findOne({
+                //         where: [{
+                //             id: zapatilla[0].comentarios[i].FkUserId
+                //         }]
+                //     })
+                //         .then(function (comentador) {
+                //             comentadores.push(comentador)
+                //             if (i == zapatilla[0].comentarios.length - 1) {
                                
                                 // return res.send(zapatilla)
                                 return res.render('product', {
                                     productos: zapatilla,
-                                    id: req.params.id,
-                                    comentadores: comentadores
+                                 
+                                    
                                 })
-                            }
-                        })
-                }
+                            // }
+                        // })
+                // }
                 /*else{
                 return res.render('product', {
                     productos: zapatilla,
@@ -121,7 +121,7 @@ const controladorProductos = {
                 color: req.body.color,
                 created_at: new Date(),
                 updated_at: new Date(),
-
+                FkUserId:req.session.user.id
             }
             products.create(sneaker)
                 .then(function (sneakerGuardado) { //En el parametro recibimos el registro que se acaba de crear en la base de datos
@@ -130,6 +130,27 @@ const controladorProductos = {
                 })
                 .catch(error => console.log(error))
         }
+
+        //Tenemos que guardar esta info en la base de datos
+
+    },
+    comment: function (req, res) {
+        //return res.send( req.body)
+     
+            //Obtener los datos del formulario y armar el objeto literal que quiero guardar
+            let comentario = {
+                FkProductId: req.params.id,
+                FkUserId:req.session.user.id,
+                createdAt:Date.now(),
+                comentario:req.body.comentario
+              
+            }
+            comentarios.create(comentario)
+                .then(function (comment) { //En el parametro recibimos el registro que se acaba de crear en la base de datos
+
+                    return res.redirect('/product/'+req.params.id)
+                })
+                .catch(error => console.log(error))
 
         //Tenemos que guardar esta info en la base de datos
 

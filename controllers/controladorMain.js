@@ -20,9 +20,11 @@ const controladorMain = {
         )
        //Hacer el then(results) que renderiza index y le paso como objeto literal results//
        .then(function(results){
-            //Renderizamos la vista de Index-Home page y le pasamos a la vista informacion de los results de la promesa// 
-           return res.render('index' , {sneakers: results})
          //return res.send(results)
+         //Renderizamos la vista de Index-Home page y le pasamos a la vista informacion de los results de la promesa// 
+           return res.render('index' , {sneakers: results})
+
+      
               
          }
         
@@ -38,7 +40,7 @@ const controladorMain = {
            }],
            where: {
               [op.or]: [{
-                    nombre: {
+                    marca: {
                        [op.like]: `%${search}%`
                     }
                  },
@@ -51,7 +53,7 @@ const controladorMain = {
            }
         }).then(function (products) {
               return res.render('search-results', {
-                 productos: products
+                 sneakers: products
               })
         })
      },

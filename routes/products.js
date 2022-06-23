@@ -20,6 +20,7 @@ var storage = multer.diskStorage({
 
 //router.get('/edit/:id', controladorProductos.edit) 
 router.post('/store', upload.single('images'), controladorProductos.store)
+router.post('/comment/:id', controladorProductos.comment)
 //router.post('/update/:id', upload.single('image'), controladorProductos.update)
 //router.post('/storeComentarios', controladorProductos.storeComentarios)
 router.get('/create', controladorProductos.create) // Ruta que muestra el form de carga

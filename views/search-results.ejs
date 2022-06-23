@@ -19,24 +19,36 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% if (productos.length > 0) { %> 
-				<% for ( let i=0 ; i < productos.length; i++) { %>
+			<% if (sneakers.length > 0) { %> 
+				<% for(let i=0; i < sneakers.length; i++){ %>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
+							<a href="/product/<%= sneakers[i].id %>">
 								<figure class="product-box_image">
-									<img src= "/images/products/<%=productos[i].imagen %> " alt="img">
+									<img src="/images/sneakers/<%= sneakers[i].image %>" alt="bugeada">
 								</figure>
 								<article class="product-box_data">
-									<h2 class="producto"> <a href="/product/<%= productos[i].nombre %> "><%= productos[i].nombre %> </h2> </a>
-									<p> <%= productos[i].descripcion%> </p>
-									<p><a href="/users/profile/<%= productos[i].usuario.id%> "> Subido por: <%= productos[i].usuario.username %> </p> </a>
-								</article>		
+									<h2>
+										<%= sneakers[i].marca %>
+									</h2>
+									<p> </p>
+									<h2>
+										<%= sneakers[i].modelo %>
+									</h2>
+									<p>
+										<%= sneakers[i].descripcion %>
+									</p>
+									<p>Comentarios: <%=sneakers[i].comentarios.length%></p>
+								</article>
+							</a>
 						</section>
 					</div>
-					<% } %> 
+
+					<%}%>
 					<% } else { %>
 						<h1>No encontramos coincidencias con tu busqueda</h1>
 					<% } %> 
+				
 			
 
 
@@ -47,6 +59,7 @@
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->
+	
 </body>
 
 </html>

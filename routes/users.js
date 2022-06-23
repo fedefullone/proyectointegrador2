@@ -23,8 +23,9 @@ router.get('/login', controladorUsers.login);//Muestra el form de login al usuar
 router.post('/singIn', controladorUsers.signIn);
 router.get('/register', controladorUsers.create);//Muestra el form registro al usuario
 router.post('/store', upload.single('images'), controladorUsers.store);//Procesa los datos recibidos en el form
+router.post('/edit/:id',controladorUsers.editProfile);//Procesa los datos recibidos en el form
 router.get('/logout', controladorUsers.logout);
-router.get('/edit', controladorUsers.edit);
+router.get('/edit/:id', controladorUsers.edit);
 router.get('/:id', controladorUsers.show);
 
 
