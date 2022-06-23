@@ -16,24 +16,18 @@
 			
 			
 			<div class="img-container offset-3 col-2">
-				<img src="<%for(let i=0; i < usuario.length; i++){ %>
-					<% if(id==usuario[i].id){ %>
-						<%= usuario[i].image %>
 
-							<% } %>
-									<% } %>" alt="foto de perfil" class="foto-perfil">
+
+				<img src="/images/users/<%= user.image %> " alt="foto de perfil de <%= user.image %> " class="foto-perfil">
+
 			</div>
 			
 			
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title">
-						<%for(let i=0; i < usuario.length; i++){ %>
-							<% if(id==usuario[i].id){ %>
-								<%= usuario[i].username %>
 
-									<% } %>
-											<% } %>
+					<h1 class="main-title"><%= user.username %> 
+
 						<a href="/user/edit">
 							<i class="fas fa-cog"></i>
 						</a>

@@ -21,10 +21,20 @@ VALUES
 
 INSERT INTO comments (comentario,FkProductId,FkUserId,createdAt)
 VALUES
-("Muy buenas zapatillas! Buena calidad.", 2, 3, curdate()),
-("Esperaba mejor calidad", 12, 2, curdate()),
-("Mis zapatillas favoritas", 8, 1, curdate())
-
+("Muy buenas zapatillas! Buena calidad.", 1, 3, curdate()),
+("Esperaba mejor calidad", 2, 2, curdate()),
+("Me encantan", 3, 1, curdate()),
+("Estan buenas", 4, 3, curdate()),
+("Muy mala calidad", 5, 2, curdate()),
+("Horribles", 6, 1, curdate()),
+("Mis favoritas", 7, 3, curdate()),
+("Las mejores del mercado", 8, 2, curdate()),
+("Se me rompieron a los dos dias", 9, 1, curdate()),
+("Las tengo hace mucho y siguen impecables", 10, 3, curdate()),
+("Fabulosas", 11, 2, curdate()),
+("Zafan", 12, 1, curdate())
+("Demasiado feas", 1, 3, curdate())
+("las mejores que vi en mi vida", 3, 3, curdate())
 
 
 
