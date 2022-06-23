@@ -1,6 +1,7 @@
 const db = require('../database/models');// Trae los modelos
 const users = db.User; //Este es el alias
 const products = db.Product;
+const op = db.Sequelize.Op
 
 
 const controladorMain = {
@@ -26,7 +27,34 @@ const controladorMain = {
          }
         
         );
-    }
+    },
+    searchResults: function (req, res) {
+        let search = req.query.search
+        products.findAll({
+           include: [{
+              association: 'owner'
+           }, {
+              association: 'comentarios'
+           }],
+           where: {
+              [op.or]: [{
+                    nombre: {
+                       [op.like]: `%${search}%`
+                    }
+                 },
+                 {
+                    descripcion: {
+                       [op.like]: `%${search}%`
+                    }
+                 }
+              ]
+           }
+        }).then(function (products) {
+              return res.render('search-results', {
+                 productos: products
+              })
+        })
+     },
 
         
             
