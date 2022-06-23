@@ -4,19 +4,36 @@
 <%- include('./partials/head') %>
 
 <body>
-	<!-- Header -->
-	<%- include('./partials/headerlogueado') %>
-	<!-- /Header -->
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs')  %> 
+	  <% }else {%>
+		  <%- include('./partials/header.ejs')  %> 
+	  <% } %> 
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
+			
+			
 			<div class="img-container offset-3 col-2">
-				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSITv146SuDFRBaZF_XQi5EbPn7xHGImc48pg&usqp=CAU" alt="foto de perfil" class="foto-perfil">
+				<img src="<%for(let i=0; i < usuario.length; i++){ %>
+					<% if(id==usuario[i].id){ %>
+						<%= usuario[i].image %>
+
+							<% } %>
+									<% } %>" alt="foto de perfil" class="foto-perfil">
 			</div>
+			
+			
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title">Sneakerhead157 
+					<h1 class="main-title">
+						<%for(let i=0; i < usuario.length; i++){ %>
+							<% if(id==usuario[i].id){ %>
+								<%= usuario[i].username %>
+
+									<% } %>
+											<% } %>
 						<a href="/user/edit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -36,41 +53,7 @@
 	<!-- /Datos del usuario -->
 
 	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
-			</div>
-			<!-- Show mis productos -->
-			<% for(let i=0; i < 3; i++){ %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product/<%= productos[i].id %>">
-							<figure class="product-box_image">
-								<img src="<%= productos[i].imagen %>" alt="cafetera moulinex">
-							</figure>
-							<article class="product-box_data">
-								<h2>
-									<%= productos[i].marca %>
-								</h2>
-								<p> </p>
-								<h2>
-									<%= productos[i].modelo %>
-								</h2>
-								<p>
-									<%= productos[i].descripcion %>
-								</p>
-								<p>Comentarios: 5</p>
-							</article>
-						</a>
-					</section>
-				</div>
-
-				<%}%>
-			
-			
-		</div>
-	</div>
+	
 	<!-- /Mis productos -->
 
 

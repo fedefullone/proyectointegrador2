@@ -45,7 +45,7 @@ const controladorProductos = {
                             comentadores.push(comentador)
                             if (i == zapatilla[0].comentarios.length - 1) {
                                
-                                 return res.send(zapatilla)
+                                // return res.send(zapatilla)
                                 return res.render('product', {
                                     productos: zapatilla,
                                     id: req.params.id,

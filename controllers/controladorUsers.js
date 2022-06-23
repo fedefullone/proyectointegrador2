@@ -129,29 +129,103 @@ const controladorUsers = {
         return res.render("login")
     },
 
-    /*
-    show: function(req, res){
+
+    show: function (req, res) {
+
+        let id = req.params.id
+        users.findAll({
+            where: [{
+                id: req.params.id
+            }],
+            include: [{
+                association: "posteos"
+            }, {
+                association: "comentarios"
+            }]
+        })
+            .then(function (usuario) {
+        
         return res.render('profile', {
-            productos: database.productos,
-            usuarios: database.usuario,
+            usuario: usuario,
+            id: req.params.id,
+            //posteos: posteos
         })
+    })
     },
-    register: function(req, res){
-        return res.render('register',{
-            productos: database.productos,
-            usuarios: database.usuario,
-        })
-    },
-    edit:  function(req, res){
-        return res.render('profile-edit',{
-            usuario:database.usuario,
-        })
-    },
-    login:   function(req, res){
-        return res.render('login',{
-            productos: database.productos,
-            usuarios: database.usuario,
-        })
-    },*/
+
 }
 module.exports = controladorUsers;
+
+        /* users.findAll({
+             where: [{
+                 id: req.params.id
+             }],
+             include: [{
+                 association: "posteos"
+             }, {
+                 association: "comentarios"
+             }]
+         })
+             .then(function (usuario) {
+                
+
+
+
+
+                 let posteos = [];
+                 return res.render('profile', {
+                     usuario: usuario,
+                     id: req.params.id,
+                     posteos: posteos
+                 })
+                 /* for (let i = 0; i < usuario[0].comentarios.length; i++) {
+                      //if (zapatilla.comentarios != null ){
+                      users.findOne({
+                          where: [{
+                              id: usuario[0].comentarios[i].FkUserId
+                          }]
+                      })
+                          .then(function (posteos) {
+                              comentadores.push(posteos)
+                              if (i == usuario[0].comentarios.length - 1) {
+                                 
+                                  // return res.send(zapatilla)
+                                  return res.render('profile', {
+                                      usuario: usuario,
+                                      id: req.params.id,
+                                      posteos: posteos
+                                  })
+                              }
+                          })
+                  }
+               
+      
+ 
+             })
+ 
+         },*/
+
+ /*return res.render('profile', {
+           productos: database.productos,
+           usuarios: database.usuario,
+       
+
+
+
+   register: function(req, res){
+       return res.render('register',{
+           productos: database.productos,
+           usuarios: database.usuario,
+       })
+   },
+   edit:  function(req, res){
+       return res.render('profile-edit',{
+           usuario:database.usuario,
+       })
+   },
+   login:   function(req, res){
+       return res.render('login',{
+           productos: database.productos,
+           usuarios: database.usuario,
+       })
+   },*/
