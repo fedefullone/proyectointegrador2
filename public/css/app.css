@@ -80,7 +80,7 @@ hr {
 }
 
 .main-header_credit-link {
-  font-size: 1.5em;
+  font-size: 2.0em;
   margin-top: 20px;
   text-align: center;
 }
@@ -110,6 +110,12 @@ hr {
   border-left: solid 1px var(--light-gray);
   color: var(--gray);
   cursor: pointer;
+}
+
+.foto-logueado{
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 
