@@ -43,16 +43,14 @@
 										<% } %>
 					</h2>
 
-					<p class="product-detail-description">
-						<a href="/product/add">Agregar producto</a>
-					</p>
+					
 				</div>
 				<div class="product-detail">
 					<div class="row">
 						<article class="col-12 col-lg-8 product-detail-info">
 							<% for (let i=0; i < productos.length; i++) { %>
 								<% if(id==productos[i].id){ %>
-									<img src="<%= productos[i].imagen %>" alt=" " class="product-detail-img">
+									<img src="<%= productos[i].image %>" alt=" " class="product-detail-img">
 									<p class="product-detail-description">
 										<%= productos[i].descripcion %>
 									</p>
@@ -63,20 +61,18 @@
 						</article>
 						<div class="col-12 col-lg-4">
 							<section class="comments">
-									<article>
+								<article>
 									<img src="https://via.placeholder.com/35" alt="">
 									<div class="data">
-										<%if (comentadores[0] != undefined) { %>
-									<!--  <% for (let i=0; i < productos[0].comentarios.length; i++) { %>-->	
-											
+										<% for (let i=0; i < productos[0].comentarios.length; i++) { %>
 											<p class="user">
 												<strong> <a href="/user/<%= comentadores[i].id %>">
 														<%= comentadores[i].username %>
 													</a> </strong>
 												<%= productos[0].comentarios[i].comentario %>
 											</p>
-										<!--	<% } %> -->
-										<% } %>
+											<% } %>
+
 									</div>
 								</article>
 
