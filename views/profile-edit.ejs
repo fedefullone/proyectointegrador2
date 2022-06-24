@@ -17,14 +17,33 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form method="get" action="/user/store" class="form-register-container">
-					<input type="email" name="" class="form-register" placeholder="Ingrese su email">
-					<input type="text" name="" class="form-register" placeholder="Nombre de usuario">
-					<input type="text" class="form-register" name="contraseña" placeholder="Contraseña">
-					<input type="date" class="form-register" name="fecha">
-					<input type="number" class="form-register" name="DNI" placeholder="Número de documento">
-					<input type="file" class="form-register" name="foto">
-					<button type="submit"  name="" class="form-register-submit">enviar</button> 
+				<form method="post" action="/user/edit/<%= usuario.id %>" class="form-register-container">
+						<div>
+							<label for="name" class="formulario-datos">Nombre:</label>
+							<input id="name" type="text" name="username" value="<%= usuario.username %>">
+						</div>
+						<br>
+						<div>
+							<label for="email" class="formulario-datos">Email:</label>
+							<input id="email" type="text" name="email" value="<%= usuario.email %>">
+						</div>
+						
+						<br>
+						<div>
+							<label for="fecha de nacimiento" class="formulario-datos">Fecha de nacimiento:</label>
+							<input id="Fecha de nacimiento" type="date" name="birthdate" value="<%= usuario.birthdate %>">
+						</div>
+						<br>
+						<div>
+							<label for="numero de documento" class="formulario-datos">DNI:</label>
+							<input id="numero de documento" type="text" name="dni" value="<%= usuario.dni %>">
+						</div>
+						<br>
+						
+						<div>
+							<button type="submit">Editar</button>
+						</div>
+
 				</form>
 			</h2>
 

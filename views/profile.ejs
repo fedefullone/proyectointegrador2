@@ -18,7 +18,7 @@
 			<div class="img-container offset-3 col-2">
 
 
-				<img src="/images/users/<%= user.image %> " alt="foto de perfil de <%= user.image %> " class="foto-perfil">
+				<img src="/images/users/<%= usuario.image %> " alt="foto de perfil de <%= usuario.image %> " class="foto-perfil">
 
 			</div>
 			
@@ -26,9 +26,9 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 
-					<h1 class="main-title"><%= user.username %> 
+					<h1 class="main-title"><%= usuario.username %> 
 
-						<a href="/user/edit">
+						<a href="/user/edit/<%= usuario.id %>">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>

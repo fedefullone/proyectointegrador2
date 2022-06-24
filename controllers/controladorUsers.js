@@ -65,6 +65,31 @@ const controladorUsers = {
         //Tenemos que guardar esta info en la base de datos
 
     },
+    editProfile: function (req, res) {
+        //return res.send( req.body)
+     
+            //Obtener los datos del formulario y armar el objeto literal que quiero guardar
+            let usuario = {
+                username: req.body.username,
+                email:req.body.email,
+                birthdate:req.body.birthdate,
+                dni:req.body.dni,
+                updatedAt: Date.now()
+            }
+            users.update(usuario,{
+                where:{
+                    id:req.params.id
+                }
+            })
+                .then(function (usuario) { //En el parametro recibimos el registro que se acaba de crear en la base de datos
+
+                    return res.redirect('/user/'+req.params.id)
+                })
+                .catch(error => console.log(error))
+
+        //Tenemos que guardar esta info en la base de datos
+
+    },
 
     login: function (req, res) {
         return res.render('login')
@@ -134,10 +159,8 @@ const controladorUsers = {
     show: function (req, res) {
 
         let id = req.params.id
-        users.findAll({
-            where: [{
-                id: req.params.id
-            }],
+        users.findByPk(id,{
+           
             include: [{
                 association: "posteos"
             }, {
@@ -148,14 +171,29 @@ const controladorUsers = {
 
                 return res.render('profile', {
                     usuario: usuario,
-                    id: req.params.id,
+                    
                     //posteos: posteos
                 })
             })
     },
     edit: function (req, res) {
-        
-            return res.render('profile-edit')
+        let id = req.params.id
+        users.findByPk(id,{
+            include:[{
+                association: "posteos"
+            },{
+                association: "comentarios"
+            }]
+        })
+
+            .then(function(usuario){
+                return res.render('profile-edit', {
+                    usuario: usuario
+
+                })
+
+            })
+            
         
     },
 
